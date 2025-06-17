@@ -5,7 +5,7 @@ from .forms import taskform
 # Create your views here.
 
 def index(request):
-    obj = task.objects.all()
+    obj = task.objects.all().order_by('date','time')
     return render(request , 'index.html' ,{'task':obj})
 
 def create(request):

@@ -7,11 +7,11 @@ class task(models.Model):
     date =models.DateField()
     time =models.TimeField()
     STATUS_CHOICES = [
-        ('P', 'Pending'),
-        ('C', 'Completed'),
-        ('I', 'In Progress'),
+        ('Pending','Pending'),
+        ('Completed','Completed'),
+        ('In Progress','In Progress'),
     ]
-    task_status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='p')
+    task_status = models.CharField(max_length=20,choices=STATUS_CHOICES,default='p')
     created_at = models.DateField(auto_now_add=True)
     priority = models.BooleanField()
 
