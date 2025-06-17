@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .card{
+            width:400px;
+        height:300px ;
+    display:flex ;
+    flex-direction:column;
+    padding:10px;
+    background-color:white;
+    border-radius:4px;
+    justify-content: space-between;
+    margin-bottom:20px;
+     }
+
+     .card-header{
+        display:flex ;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items: center;
+    gap:4px;
+     }
+     .card-footer{
+        display:flex ;
+    flex-direction:row;
+    justify-content:space-between;
+    gap:4px;
+     }
+
+     #status{
+        padding:4px 6px;
+        background-color:lightgreen;
+        color:white;
+    border-radius:4px;
+    }
+    button{
+        padding:6px 10px;
+        color:white;
+        background-color:dodgerblue ;
+    border:none;
+border-radius:4px;   }
+
+        a{
+            color:white;
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+        <h1>welcome to To-Do List App</h1>
+        <button>
+        <a href="{% url 'create' %}">create task</a>
+    </button>
+    </div>
+   
+    <div style="display: flex;flex-direction: row;gap: 35px; flex-wrap: wrap;justify-content: center;">
+    {% for task in task %}
+    <div class="card">
+       
+        <div class="card-header">
+            <h2>{{task.title}}</h2>
+            <div>
+                <button id="status">{{task.task_status}}</button>
+            </div>
+        </div>
+        <p>{{task.description}}</p>
+        <div class="card-footer">
+            <div>
+                <p>Due Date: {{task.date}}</p>
+            <p>Due Time: {{task.time}}</p>
+            </div>
+            <div>
+            <p>created_at : {{task.created_at}}</p>
+            <button>
+            <a href="{% url  'update' task.id %} ">edit status</a>
+        </button>
+        <button>
+            <a href="{% url  'delete' task.id %} ">delete task </a> 
+        </button>
+        </div>
+
+        </div>
+
+      
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
